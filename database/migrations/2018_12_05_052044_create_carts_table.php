@@ -15,6 +15,7 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('sureBuy');
             $table->timestamps();
         });
     }
