@@ -1,7 +1,7 @@
 {{-- Using medium expand navbar --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
         {{-- TODO:Add brand image. (optional) --}}
-        <a href="/" class="navbar-brand">{{config(['APP_NAME', 'BTech Shop'])}}</a>
+        <a href="/" class="navbar-brand">{{config('app.name', 'BTech Shop')}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHide">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,7 +10,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownCategory"
+                        <button class="btn btn-outline-dark text-light dropdown-toggle" type="button" id="dropdownCategory"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Category
                         </button>
@@ -23,18 +23,14 @@
                         </div>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    {{-- TODO:Add search icon --}}
+            </ul>
+            {{-- TODO:Add search icon --}}
                     {{-- Belum fix action nya mau ke arah mana --}}
-                    <form action="/product" method="POST" class="form-inline">
+                    <form action="/product" method="POST" class="form-inline mx-auto">
                         <input type="search" class="form-control mr-sm-2" name="search" placeholder="Find your product"
                             aria-label="search">
                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                     </form>
-                </li>
-            </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
