@@ -10,4 +10,6 @@ class Category extends Model
     {
         return $this->hasMany('App\Product');
     }
+
+    protected $fillable = ["name", "coverCategory"];
 }
