@@ -48,7 +48,7 @@ class CategoryController extends Controller
         // Validate form (backend)
         $request->validate([
             "name" => "required|max:50",
-            "cover" => "image|nullable|max:2999"
+            "coverCategory" => "image|nullable|max:2999"
         ]);
 
         // Handle file upload
@@ -113,7 +113,7 @@ class CategoryController extends Controller
         // Validate form (backend)
         $request->validate([
             "name" => "required|max:50",
-            "cover" => "image|nullable|max:2999"
+            "coverCategory" => "image|nullable|max:2999"
         ]);
 
         // Handle file upload
@@ -135,7 +135,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->name = $request->name;
         if ($request->hasFile('coverCategory')) {
-            $post->coverCategory = $filenameToStore;
+            $category->coverCategory = $filenameToStore;
         }
 
         $category->save();

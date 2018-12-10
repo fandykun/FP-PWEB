@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-    <form action="/category" method="post" enctype="multipart/form-data">
+    <form action="/category/{{$category->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="form-group">

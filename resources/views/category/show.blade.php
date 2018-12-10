@@ -1,6 +1,11 @@
 @extends('layouts.base')
 
 @section('content')
+    @if (!Auth::guest())
+        @if(Auth::user()->name == 'Admin' || Auth::user()->email == 'felix@fpradipt.com')
+            <a href="/category/{{$categories->id}}/edit" class="btn btn-warning my-3">Edit Category</a>
+        @endif
+    @endif
     <h3>{{$categories->name}}</h3>
 
     <div class="card-deck">
