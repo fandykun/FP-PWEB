@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'address' => $faker->address,
                 'phoneNumber' => $faker->phoneNumber,
                 'created_at' => now(),
-                'update_at' => now()
+                'updated_at' => now()
             ]);
         }
     }

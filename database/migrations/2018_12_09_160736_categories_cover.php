@@ -13,7 +13,7 @@ class CategoriesCover extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             $table->string('coverCategory');
         });
     }
@@ -25,7 +25,7 @@ class CategoriesCover extends Migration
      */
     public function down()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             $table->dropColumn('coverCategory');
         });
     }
