@@ -4,8 +4,16 @@
     @if (!Auth::guest())
         @if(Auth::user()->name == 'Admin' || Auth::user()->email == 'felix@fpradipt.com')
             <a href="/category/{{$categories->id}}/edit" class="btn btn-warning my-3">Edit Category</a>
+            <form action="/category/{{$categories->id}}" method="post">
+                @csrf
+                @method('DELETE')
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
         @endif
     @endif
+    <a href="/category" class="float-right btn btn-outline-success">Back</a>
     <h3>{{$categories->name}}</h3>
 
     <div class="card-deck">

@@ -150,6 +150,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        if ($category->coverCategory != 'noimage.jpg') {
+            Storage::delete('public/coverCategories/' . $category->coverCategory);
+        }
     }
 }
