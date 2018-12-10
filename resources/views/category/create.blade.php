@@ -15,6 +15,7 @@
 
         <div class="form-group">
             <button class="btn btn-success" type="submit">Submit</button>
+            <a href="/category" class="btn btn-outline-success">Back</a>
         </div>
     </form>
 @endsection
