@@ -154,5 +154,8 @@ class CategoryController extends Controller
         if ($category->coverCategory != 'noimage.jpg') {
             Storage::delete('public/coverCategories/' . $category->coverCategory);
         }
+
+        $category->delete();
+        return redirect('/category');
     }
 }
