@@ -16,14 +16,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $product = Product::find();
+        $products = Product::all();
 
-        return view('pages.index');
+        return view('pages.index')->with('products', $products);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     *'public/stylesheets/styles.css
      * @return \Illuminate\Http\Response
      */
     public function create()

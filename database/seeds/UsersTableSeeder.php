@@ -18,8 +18,11 @@ class UsersTableSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => bcrypt('secret'),
+                'remember_token' => str_random(10),
                 'address' => $faker->address,
-                'phoneNumber' => $faker->phoneNumber
+                'phoneNumber' => $faker->phoneNumber,
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
     }

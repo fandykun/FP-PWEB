@@ -7,10 +7,11 @@
             <div class="card">
                 <img src="" alt="temporary-image" class="card-img-top">
                 <div class="card-body">
+                    {{-- Jangan lupa pake foreach --}}
                     {{-- $product->title --}}
                     <h4 class="card-title">One</h4>
                     {{-- $product->description --}}
-                    <p class="card-text">Product One. Product One. Product One</p>
+                    <p class="card-text">Product One. Product One. Product One</p>  
                 </div>
                 <div class="card-footer">
                     {{-- Href masih belum fix --}}
