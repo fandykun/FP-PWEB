@@ -1,7 +1,11 @@
 @extends('layouts.base')
 
 @section('content')
-    
+    @if (!Auth::guest())
+        @if(Auth::user()->name == 'Admin' || Auth::user()->email == 'felix@fpradipt.com')
+            <a href="/product/create" class="btn btn-warning my-3">Create Product</a>
+        @endif
+    @endif
     <div class="card-deck">
         @foreach($products as $product)
             <div class="card">
