@@ -7,9 +7,9 @@
         @endif
     @endif
     {{-- TODO:Change card-deck to column --}}
-    <div class="card-deck">
+    <div class="card-deck mt-5">
         @foreach ($categories as $category)
-            <div class="card bg-dark text-white">
+            <div class="card bg-white text-dark shadow rounded">
                 <a href="/category/{{$category->id}}" class="text-white">
                     <img src="/storage/coverCategories/{{$category->coverCategory}}" style="max-width:1108px; max-height:170px;" alt="category image" class="card-img">
                     <div class="card-img-overlay">
