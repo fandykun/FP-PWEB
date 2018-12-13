@@ -38,9 +38,17 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-success">Submit</button>
-            <a href="/" class="btn btn-outline-warning mx-2">Cancel</a>
+            {{-- <a href="/" class="btn btn-outline-warning mx-2">Cancel</a> --}}
         </div>
-
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
 
     </form>

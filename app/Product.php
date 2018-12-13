@@ -21,5 +21,5 @@ class Product extends Model
         return $this->hasMany('App\Transaction');
     }
 
-    protected $fillable = ['productName', 'description', 'price', 'stock', 'rating', 'coverProduct', 'category_id'];
+    protected $fillable = ['productName', 'description', 'price', 'stock', 'rating', 'coverProducts', 'category_id'];
 }

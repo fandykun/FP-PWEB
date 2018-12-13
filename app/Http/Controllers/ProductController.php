@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Category;
 
 // use Symfony\Component\HttpFoundation\Request;
@@ -44,20 +45,21 @@ class ProductController extends Controller
     {
         // Validate form (backend)
         $request->validate([
-            "productName" => "required|max:50",
+            "productName" => "required|max:255",
             "categoryName" => "required",
             "description" => "max:255",
-            "productPrice" => "required",
-            "productStock" => "required",
-            "coverCategory" => "image|nullable|max:2999"
+            "priceProduct" => "required",
+            "stockProduct" => "required",
+            "coverProduct" => "image|nullable|max:2999"
         ]);
+        // dd($request);
 
         // Handle file upload
         if ($request->hasFile('coverProduct')) {
             // Get filename w/ ext
             $filenameWithExt = $request->file('coverProduct')->getClientOriginalName();
             // Filename wo/ ext
-            $filename = \pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Ext
             $ext = $request->file('coverProduct')->extension();
             // Filename to store
@@ -70,14 +72,14 @@ class ProductController extends Controller
 
         $product->create([
             "productName" => $request->productName,
-            "category_id" => $request->categoryName,
+            "category_id" => $request->categoryName, //Ini berdasarkan tabel (fk) iya iya wkwk
             "description" => $request->description,
-            "price" => $request->productPrice,
-            "stock" => $request->productStock,
-            "coverProduct" => $filenameToStore
+            "price" => $request->priceProduct,
+            "stock" => $request->stockProduct,
+            "coverProducts" => $filenameToStore
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Product Berhasil Dibuat');
     }
 
     /**
@@ -147,7 +149,7 @@ class ProductController extends Controller
         $product->stock = $request->productStock;
 
         if ($request->hasFile('coverProduct')) {
-            $product->coverProduct = $filenameToStore;
+            $product->coverProducts = $filenameToStore;
         }
 
         $product->save();
@@ -164,8 +166,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        if ($category->coverProduct != 'noimage.jpg') {
-            Storage::delete('public/coverProducts/' . $category->coverProduct);
+        if ($$product->coverProducts != 'noimage.jpg') {
+            Storage::delete('public/coverProducts/' . $$product->coverProducts);
         }
 
         $product->delete();
