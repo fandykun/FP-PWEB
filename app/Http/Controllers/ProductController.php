@@ -47,7 +47,7 @@ class ProductController extends Controller
         $request->validate([
             "productName" => "required|max:255",
             "categoryName" => "required",
-            "description" => "max:255",
+            "description" => "required",
             "priceProduct" => "required",
             "stockProduct" => "required",
             "coverProduct" => "image|nullable|max:2999"
@@ -90,8 +90,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $products = Product::findOrFail($id);
-        return view('pages.show')->with('products', $products);
+        $product = Product::findOrFail($id);
+        return view('pages.show')->with('product', $product);
     }
 
     /**
@@ -102,8 +102,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $products = Product::findOrFail($id);
-        return view('pages.edit')->with('products', $products);
+        $product = Product::findOrFail($id);
+        $categoryProd = Category::find($product->category_id);
+        $categories = Category::all();
+        return view('pages.edit')->with(['product' => $product, 'categoryProd' => $categoryProd, 'categories' => $categories]);
     }
 
     /**
@@ -113,16 +115,16 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         // Validate form (backend)
         $request->validate([
-            "productName" => "required|max:50",
+            "productName" => "required|max:255",
             "categoryName" => "required",
-            "description" => "max:255",
-            "productPrice" => "required",
-            "productStock" => "required",
-            "coverCategory" => "image|nullable|max:2999"
+            "description" => "required",
+            "priceProduct" => "required",
+            "stockProduct" => "required",
+            "coverProduct" => "image|nullable|max:2999"
         ]);
 
         // Handle file upload
@@ -142,11 +144,12 @@ class ProductController extends Controller
         }
 
         // Product update
+        $product = Product::findOrFail($id);
         $product->productName = $request->productName;
         $product->category_id = $request->categoryName;
         $product->description = $request->description;
-        $product->price = $request->productPrice;
-        $product->stock = $request->productStock;
+        $product->price = $request->priceProduct;
+        $product->stock = $request->stockProduct;
 
         if ($request->hasFile('coverProduct')) {
             $product->coverProducts = $filenameToStore;
