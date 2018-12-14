@@ -7,3 +7,8 @@ $(document).ready(function(){
         }
     });
 });
+
+// Enable popover everywhere with data-toggle
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover()
+});
