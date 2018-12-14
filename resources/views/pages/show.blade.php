@@ -20,7 +20,7 @@
         </div>
 
         {{-- Masih belum fix redirect ke transaksi atau cart --}}
-        <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow d-flex flex-fill justify-content-center">Buy</a>
+        <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block">Buy</a>
     </div>    
 
 
