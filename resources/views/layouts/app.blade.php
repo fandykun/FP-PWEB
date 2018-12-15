@@ -16,6 +16,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownCategory">
                             {{-- TODO:Add icon for category items --}}
+                            {{-- TODO:Category ngga manual --}}
                             <a href="/category/1" class="dropdown-item">Smartphone</a>
                             <a href="/category/2" class="dropdown-item">PC & Laptop</a>
                             <a href="/category/3" class="dropdown-item">Smartwatch</a>
