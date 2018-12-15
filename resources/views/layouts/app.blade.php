@@ -31,6 +31,11 @@
                             aria-label="search">
                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                     </form>
+
+            <a href="javascript:void(0)" class="btn btn-primary" rel="popover" data-contentwrapper=".mycontent" data-trigger="focus">Cart</a>
+
+            @include('layouts.cart')
+
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
