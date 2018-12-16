@@ -15,7 +15,7 @@
             @endfor
         </ol>
             
-        <div class="carousel-inner">
+        {{-- <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/storage/coverProducts/{{$products[0]->coverProducts}}" alt="{{$products[0]->productName}}" class="d-block" style="height:50%; width:50%; background-size:100%;">
                 <div class="carousel-caption d-none d-md-block">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div> --}}
 
          <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#carouselProduct" data-slide="prev">
@@ -43,16 +43,17 @@
         </a>
     </div>
 
-    <div class="card-columns">
+    <div class="row">
         @foreach($products as $product)
             {{-- OPTIONAL: Cleanup style maybe with css file --}}
             <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
+            <div class="col-lg-12 d-flex align-items-stretch">
                 <div class="card">
                     <img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top">
                    
                     <div class="card-body">
-                        <h4 class="card-title text-dark">{{$product->productName}}</h4>
-                        <p class="card-text text-dark">{{$product->description}}</p>  
+                        <h4 class="card-title text-dark" style="text-align: center;">{{$product->productName}}</h4>
+                        <p class="card-text text-dark text-truncate" style="max-width:200px">{{$product->description}}</p>  
                     </div>
                 
                     <div class="card-footer">
@@ -62,6 +63,7 @@
                         {{-- Tambah button untuk buy (redirect ke transaksi) tanpa harus visit show product --}}
                     </div>
                 </div>
+            </div>
             </a>
         @endforeach
     </div>
