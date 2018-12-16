@@ -10,11 +10,8 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button class="btn btn-outline-dark text-light dropdown-toggle" type="button" id="dropdownCategory"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Category
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownCategory">
+                        <a href="/category" class="btn btn-outline-dark text-white" id="popoverCategory" data-toggle="popover" data-contentwrapper=".popover-menu">Category</a>
+                        <div class="popover-menu" style="display:none;">
                             {{-- TODO:Add icon for category items --}}
                             {{-- TODO:Category ngga manual --}}
                             <a href="/category/1" class="dropdown-item">Smartphone</a>
