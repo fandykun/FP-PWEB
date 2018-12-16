@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -51,7 +41,9 @@ class CartController extends Controller
         $cart->product_id = $request->productId;
         $cart->quantity = 1;
         $product = Product::findOrFail($cart->product_id);
-        if($cart->quantity > $product->stock) $cart->quantity = $product->stock;
+        if ($cart->quantity > $product->stock) {
+            $cart->quantity = $product->stock;
+        }
         $cart->save();
         return redirect()->back();
     }
@@ -90,7 +82,9 @@ class CartController extends Controller
         $cart = Cart::findOrFail($id);
         $cart->quantity += $request->quant;
         $product = Product::findOrFail($cart->product_id);
-        if($cart->quantity > $product->stock) $cart->quantity = $product->stock;
+        if ($cart->quantity > $product->stock) {
+            $cart->quantity = $product->stock;
+        }
         $cart->save();
         return redirect()->back();
     }
@@ -101,8 +95,11 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
-        //
+        $cart = Cart::find($id);
+        $cart->delete();
+
+        return redirect()->back();
     }
 }
