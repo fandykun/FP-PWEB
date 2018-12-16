@@ -17,7 +17,7 @@
                         <tr>
                             <td><img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top cart-img"></td>
                             <td class="mx0">
-                                <h6 class="card-title">{{$product->productName}}</h6>
+                                <h6 class="card-title text-truncate" style="max-width:100px">{{$product->productName}}</h6>
                                 <p class="d-flex rightflex text-muted">x{{$cart->quantity}}</p>
                                 <p class="d-flex rightflex">Rp. {{$product->price * $cart->quantity}}</p>
                             </td>
