@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -35,7 +45,12 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cart = new Cart;
+        $cart->user_id = auth()->user()->id;
+        $cart->product_id = $request->productId;
+        $cart->quantity = 1;
+        $cart->save();
+        return redirect()->back();
     }
 
     /**
@@ -67,9 +82,12 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, $id)
     {
-        //
+        $cart = Cart::findOrFail($id);
+        $cart->quantity++;
+        $cart->save();
+        return redirect()->back();
     }
 
     /**

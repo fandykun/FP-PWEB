@@ -5,6 +5,7 @@ Route::get('/', 'ProductController@index');
 
 Route::resource('product', 'ProductController');
 Route::resource('category', 'CategoryController');
+Route::resource('cart', 'CartController');
 
 Auth::routes();
 

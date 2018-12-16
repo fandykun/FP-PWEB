@@ -58,8 +58,13 @@
                     <div class="card-footer">
                         <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
                         {{-- Href masih belum fix --}}
-                        {{-- <a href="/transaction/{{$transaction->id}}" class="btn btn-success my-2 my-sm-0">Buy</a> --}}
-                        {{-- Tambah button untuk buy (redirect ke transaksi) tanpa harus visit show product --}}
+                        @guest
+                        @else
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block">Buy</a>
+                                @include('buttons.addcart')
+                            </div>
+                        @endguest
                     </div>
                 </div>
             </a>
