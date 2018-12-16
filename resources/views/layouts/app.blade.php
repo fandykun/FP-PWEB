@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                     </form>
 
-            <a href="javascript:void(0)" class="btn btn-primary" rel="popover" data-contentwrapper=".mycontent" data-trigger="focus">Cart</a>
+            <a href="javascript:void(0)" class="btn btn-outline-primary" rel="popover" data-contentwrapper=".mycontent" data-trigger="focus">Cart</a>
 
             @include('layouts.cart')
 

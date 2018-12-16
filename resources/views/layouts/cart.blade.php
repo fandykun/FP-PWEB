@@ -2,9 +2,7 @@
     <?php $sum = 0; $count=0;?>  
     <div class="card-rows"> 
         @guest
-            <tr>
-                <td>You aren't signed in.</td>
-            </tr>    
+            <h6>You aren't logged in.</h6>
         @else
             <?php $carts = auth()->user()->cart?>
             {{-- OPTIONAL: Cleanup style maybe with css file --}}
@@ -20,18 +18,23 @@
                             <td><img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top cart-img"></td>
                             <td class="mx0">
                                 <h6 class="card-title">{{$product->productName}}</h6>
-                                <p class="d-flex mb-0 text-muted flex-row-reverse pr-1">x{{$cart->quantity}}</p>
-                                <p class="d-flex flex-row-reverse pb-0 pr-1">Rp. {{$product->price * $cart->quantity}}</p>
+                                <p class="d-flex rightflex text-muted">x{{$cart->quantity}}</p>
+                                <p class="d-flex rightflex">Rp. {{$product->price * $cart->quantity}}</p>
                             </td>
                         </tr>
                     </table>
                 </div>
             @endforeach
-                <p class="text-muted d-flex flex-row-reverse pb-0 pr-1">Total item :{{$count}}</p>
-                <p class="d-flex flex-row-reverse pb-0 pr-1">Total Price :Rp. {{$sum}},-</p>
+                <p class="text-muted d-flex rightflex">Total item :{{$count}}</p>
+                <p class="d-flex rightflex">Total Price :Rp. {{$sum}},-</p>
         @endguest
     </div>
     <div>
-        <button type="button" class="btn btn-primary mx-auto" style="width: 200px; display: block;">Check Out</button>
+        @guest
+            <br>
+            <a class="btn btn-primary centered" href="{{ route('login') }}">{{ __('Login') }}</a>
+        @else
+            <button class="btn btn-primary centered">Check Out</button>
+        @endguest
     </div>
 </div>
