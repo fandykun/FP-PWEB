@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
+use App\Cart;
+use App\User;
+use App\Transaction;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,9 +26,22 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        // User $id
+        $user = User::find($id);
+        $carts = $user->cart;
+        
+        $transaction = new Transaction;
+        foreach ($carts as $cart) {
+            $transaction->product_id = $cart->product_id;
+        }
+        $transaction->user_id = $id;
+        $transaction->quantity = count($carts);
+
+        $transaction->save();
+
+        return redirect('/')->with('Please pay immediately.');
     }
 
     /**
@@ -43,9 +50,9 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('transaction.show');
     }
 
     /**
