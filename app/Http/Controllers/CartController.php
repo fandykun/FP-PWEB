@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -49,6 +50,8 @@ class CartController extends Controller
         $cart->user_id = auth()->user()->id;
         $cart->product_id = $request->productId;
         $cart->quantity = 1;
+        $product = Product::findOrFail($cart->product_id);
+        if($cart->quantity > $product->stock) $cart->quantity = $product->stock;
         $cart->save();
         return redirect()->back();
     }
@@ -85,7 +88,9 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         $cart = Cart::findOrFail($id);
-        $cart->quantity++;
+        $cart->quantity += $request->quant;
+        $product = Product::findOrFail($cart->product_id);
+        if($cart->quantity > $product->stock) $cart->quantity = $product->stock;
         $cart->save();
         return redirect()->back();
     }

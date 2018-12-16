@@ -57,12 +57,11 @@
                         </div>
                         <div class="card-footer">
                                 <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
-                                {{-- Href masih belum fix --}}
                                 @guest
                                 @else
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block">Buy</a>
-                                        @include('buttons.addcart')
+                                        <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block rounded-left">Buy</a>
+                                        @include('buttons.cart')
                                     </div>
                                 @endguest
                             </div>
