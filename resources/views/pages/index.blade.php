@@ -7,7 +7,7 @@
         @endif
     @endif
 
-    <div class="carousel slide my-4" data-ride="carousel" id="carouselProduct">
+    {{-- <div class="carousel slide my-4" data-ride="carousel" id="carouselProduct">
         <ol class="carousel-indicators">
             <li data-target="#carouselProduct" data-slide-to="0" class="active"></li>
             @for($i = 1; $i < count($products); $i++)
@@ -15,7 +15,7 @@
             @endfor
         </ol>
             
-        {{-- <div class="carousel-inner">
+        <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/storage/coverProducts/{{$products[0]->coverProducts}}" alt="{{$products[0]->productName}}" class="d-block" style="height:50%; width:50%; background-size:100%;">
                 <div class="carousel-caption d-none d-md-block">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             @endforeach
-        </div> --}}
+        </div>
 
          <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#carouselProduct" data-slide="prev">
@@ -41,7 +41,7 @@
         <a class="carousel-control-next" href="#carouselProduct" data-slide="next">
             <span class="carousel-control-next-icon"></span>
         </a>
-    </div>
+    </div> --}}
     
     <div class="container mt-3">
         <div class="row">
@@ -60,7 +60,7 @@
                                 @guest
                                 @else
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block rounded-left">Buy</a>
+                                        <a href="/transaction/{{$product->id}}" class="mt-2 mx-2 btn btn-outline-primary btn-block rounded-left">Buy</a>
                                         @include('buttons.cart')
                                     </div>
                                 @endguest

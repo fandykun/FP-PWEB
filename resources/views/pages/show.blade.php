@@ -18,7 +18,10 @@
                 <p class="card-text">{{$product->description}}</p>
             </div>
         </div>
-        @include('buttons.addcart')
+        
+        <div class="card">
+            @include('buttons.addcart')
+        </div>
     </div>    
 
 
