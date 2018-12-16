@@ -42,35 +42,35 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
-
-    <div class="row">
-        @foreach($products as $product)
-            {{-- OPTIONAL: Cleanup style maybe with css file --}}
-            <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
-            <div class="col-lg-12 d-flex align-items-stretch">
-                <div class="card">
-                    <img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top">
-                   
-                    <div class="card-body">
-                        <h4 class="card-title text-dark" style="text-align: center;">{{$product->productName}}</h4>
-                        <p class="card-text text-dark text-truncate" style="max-width:200px">{{$product->description}}</p>  
-                    </div>
-                
-                    <div class="card-footer">
-                        <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
-                        {{-- Href masih belum fix --}}
-                        @guest
-                        @else
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block">Buy</a>
-                                @include('buttons.addcart')
+    
+    <div class="container mt-3">
+        <div class="row">
+            <div class="card-deck">
+                {{-- OPTIONAL: Cleanup style maybe with css file --}}
+                @foreach($products as $product)
+                    <div class="card mb-4" style="min-width: 15rem; max-width: 15rem;">
+                        <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
+                        <img class="card-img-top" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">{{$product->productName}}</h5>
+                            <p class="card-text text-dark text-truncate" style="max-width:200px">{{$product->description}}</p>  
+                        </div>
+                        <div class="card-footer">
+                                <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
+                                {{-- Href masih belum fix --}}
+                                @guest
+                                @else
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow btn-block">Buy</a>
+                                        @include('buttons.addcart')
+                                    </div>
+                                @endguest
                             </div>
-                        @endguest
+        
                     </div>
-                </div>
+                @endforeach
             </div>
-            </a>
-        @endforeach
+        </div>
     </div>
 
 
