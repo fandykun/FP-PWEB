@@ -14,25 +14,27 @@
                     $sum += $cart->quantity*$product->price;
                 ?>
                 <div class="card">
-                    <table class="table table-borderless">
-                        <tr>
-                            <td><img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top cart-img"></td>
-                            <td class="mx0">
-                                <h6 class="card-title" style="max-width:100px">{{$product->productName}}</h6>
-                                <p class="d-flex rightflex text-muted">x{{$cart->quantity}}</p>
-                                <p class="d-flex rightflex">Rp. {{$product->price * $cart->quantity}}</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <form action="/cart/{{$cart->id}}" method="post">
-                        @csrf
-                        @method('DELETE')
+                    <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top cart-img"></td>
+                                <td class="mx0">
+                                    <h6 class="card-title text-dark text-truncate" style="max-width:100px">{{$product->productName}}</h6>
+                                    <p class="d-flex rightflex text-muted">x{{$cart->quantity}}</p>
+                                    <p class="d-flex rightflex text-dark">Rp. {{$product->price * $cart->quantity}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <form action="/cart/{{$cart->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
 
-                        <div class="input-group">
-                            <button type="submit" class="btn btn-danger btn-block">Remove Cart</button>
-                        </div>
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-danger btn-block">Remove Cart</button>
+                            </div>
 
-                    </form>
+                        </form>
+                    </a>
                 </div>
             @endforeach
                 <p class="text-muted d-flex rightflex">Total item :{{$count}}</p>

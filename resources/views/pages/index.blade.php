@@ -65,7 +65,7 @@
                                     </div>
                                 @endguest
                             </div>
-        
+                        </a>
                     </div>
                 @endforeach
             </div>
