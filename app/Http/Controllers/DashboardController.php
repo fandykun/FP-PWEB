@@ -39,7 +39,7 @@ class DashboardController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email',
             'address' => 'nullable|max:255',
             'phoneNumber' => 'nullable|min:9|max:13'
         ]);
@@ -51,7 +51,7 @@ class DashboardController extends Controller
         $user->phoneNumber = $request->phoneNumber;
         $user->save();
         
-        return redirect('/');
+        return redirect()->back();
     }
 
     /**
