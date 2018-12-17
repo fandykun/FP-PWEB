@@ -19,11 +19,11 @@
 @csrf
     <div class="input-group">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-outline-danger rounded-left"  data-type="minus" data-field="quant">-</button>
+                <button type="button" class="btn btn-outline-danger btn-number"  data-type="minus" data-field="quant">-</button>
             </span>
-            <input type="text" name="quant" class="form-control input-number" value="1" min="1" max="{{$product->stock}}">
+            <input type="text" name="quant" class="form-control input-number" value="0" min="0" max="{{$product->stock}}">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-outline-success rounded-right" data-type="plus" data-field="quant">+</button>
+                <button type="button" class="btn btn-outline-success btn-number" data-type="plus" data-field="quant">+</button>
             </span>
         </div>
         <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow-md btn-block">Buy</a>
@@ -38,11 +38,11 @@
         @method('PATCH')
         <div class="input-group">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant">-</button>
+                    <button type="button" class="btn btn-outline-danger btn-number"  data-type="minus" data-field="quant">-</button>
                 </span>
-                <input type="text" name="quant" class="form-control input-number" value="1" min="1" max="{{$product->stock}}">
+                <input type="text" name="quant" class="form-control input-number" value="0" min="0" max="{{$product->stock}}">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant">+</button>
+                    <button type="button" class="btn btn-outline-success btn-number" data-type="plus" data-field="quant">+</button>
                 </span>
             </div>
             <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow-md btn-block">Buy</a>
