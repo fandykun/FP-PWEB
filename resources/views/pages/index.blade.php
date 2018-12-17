@@ -59,7 +59,11 @@
                                 <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
                                 @guest
                                 @else
-                                    @include('buttons.cart')
+                                    @if($product->stock > 0)
+                                        @include('buttons.cart')
+                                    @else
+                                        <button class="mt-2 btn btn-outline-danger btn-block">Out of Stock</button>
+                                    @endif
                                 @endguest
                             </div>
                         </a>

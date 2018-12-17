@@ -20,7 +20,11 @@
         </div>
         
         <div class="card">
-            @include('buttons.addcart')
+            @if($product->stock > 0)
+                @include('buttons.addcart')
+            @else
+                <button class="mt-2 btn btn-outline-danger btn-block">Out of Stock</button>
+            @endif    
         </div>
     </div>    
 
