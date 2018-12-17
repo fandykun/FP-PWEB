@@ -22,7 +22,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $user = Auth::user();
         return view('dashboard')->with('user', $user);
@@ -41,17 +41,17 @@ class DashboardController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'address' => 'nullable|max:255',
-            'phoneNumber' => 'nullable|max:13|min:10'
+            'phoneNumber' => 'nullable|min:9|max:13'
         ]);
 
-        $user = User::findOrFail($id);
+        $user = Auth::user();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->address = $request->address;
         $user->phoneNumber = $request->phoneNumber;
         $user->save();
         
-        return redirect('/dashboard');
+        return redirect('/');
     }
 
     /**

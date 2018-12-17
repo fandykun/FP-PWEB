@@ -12,6 +12,6 @@ Route::resource('transaction', 'TransactionController');
 // Route::resource('dashboard', 'DashboardController');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::match(['PUT', 'PATCH'], '/dashboard', 
-    ['uses'=>'DashboardController@update', 
-    'as'=>'dashboard.update']);
+    ['uses'=>'DashboardController@update',
+    'as'=>'dashboard']);
 Auth::routes();
