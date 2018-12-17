@@ -8,40 +8,50 @@
         $carts = $user->cart;
         $total = 0;
     ?>
-    @foreach ($carts as $cart)
-        <?php 
-            $product = $cart->product; 
-            $total += $product->price*$cart->quantity;
-        ?>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">{{$product->productName}}</h4>
-                        <p class="card-text">{{$user->phoneNumber}}</p>
-                        <p class="card-text">{{$user->address}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/dashboard/{{$user->id}}/edit/#address" class="card-link">Edit Address</a>
-                    </div>
+    
+    
+    <div class="row my-3">
+        <div class="col-md-12">
+            {{-- Untuk card address --}}
+        </div>
+    </div>
+    <div class="row my-3">
+        @foreach ($carts as $cart)
+        <div class="col-md-6 ">
+            
+                <?php 
+                    $product = $cart->product; 
+                    $total += $product->price*$cart->quantity;
+                ?>
+                
+                <div class="card bg-light shadow-sm">
+                    <a href="/product/{{$product->id}}" style="text-decoration:none; font-style: italic;">
+                        <img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top">
+                        <div class="card-body">
+                            
+                            <h4 class="card-title text-center mt-2">{{$product->productName}}</h4>
+                            <p class="card-text text-center">Price: Rp {{$product->price}}</p>
+                            {{-- Tambahkan counter product --}}
+                        </div>
+                    </a>
+                </div>
+            
+        </div>
+        @endforeach
+    </div>
+    
+    <div class="row my-3">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title" style="font-style: italic;">Summary Cart</h3>
+                    <p class="card-text">Total Price: Rp {{$total}}</p>
                 </div>
             </div>
         </div>
-    @endforeach
-    <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Summary</h4>
-                        <p class="card-text">Total Price: Rp {{$total}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <form action="/transaction/" method="POST">
-                            @csrf
-                            <input type="hidden" name="id" value="{{$user->id}}">
-                            <button class="btn btn-primary" type="submit">Buy</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    </div>
+
+    <div class="row mt-3">
+        <a href="/transaction" class="btn btn-outline-success btn-lg btn-block">Pay</a>
+    </div>
 @endsection
