@@ -72,7 +72,7 @@ class ProductController extends Controller
 
         $product->create([
             "productName" => $request->productName,
-            "category_id" => $request->categoryName, //Ini berdasarkan tabel (fk) iya iya wkwk
+            "category_id" => $request->categoryName, //Ini berdasarkan tabel (fk)
             "description" => $request->description,
             "price" => $request->priceProduct,
             "stock" => $request->stockProduct,
@@ -93,6 +93,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('pages.show')->with('product', $product);
     }
+    
     public function showSearch(Request $request)
     {
         $product = Product::where('productName', '=', $request->searchProduct)->get();
@@ -170,9 +171,6 @@ class ProductController extends Controller
     {
         $term = $request->term;
         $products = Product::where('productName', 'LIKE', '%'.$term.'%')->get();
-        // $product = Product::findOrFail($request->id);
-        // $product->productName = $request->productName;
-        // $product->save();
         if(count($products) == 0)
             $searchResult[] = 'No item found';
         else {
