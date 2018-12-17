@@ -59,10 +59,7 @@
                                 <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
                                 @guest
                                 @else
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="/transaction/{{$product->id}}" class="mt-2 mx-2 btn btn-outline-primary btn-block rounded-left">Buy</a>
-                                        @include('buttons.cart')
-                                    </div>
+                                    @include('buttons.cart')
                                 @endguest
                             </div>
                         </a>
