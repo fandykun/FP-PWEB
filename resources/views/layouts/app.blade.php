@@ -27,9 +27,9 @@
             </ul>
             {{-- TODO:Add search icon --}}
                     {{-- Belum fix action nya mau ke arah mana --}}
-                    <form action="{{URL::to('/search')}}" method="POST" class="form-inline mx-auto" role="search">
-                        {{ csrf_field() }}
-                        <input type="text" class="typeahead form-control mr-sm-2" name="query" placeholder="Find your product"
+                    <form action="{{URL::to('/product')}}" method="POST" class="form-inline mx-auto">
+                        {{-- {{ csrf_field() }} --}}
+                        <input type="text" id="searchProduct" class="typeahead form-control mr-sm-2" name="searchProduct" placeholder="Find your product"
                             aria-label="search">
                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
                     </form>

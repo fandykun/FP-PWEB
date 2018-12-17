@@ -1,21 +1,6 @@
-@extends('layouts.base')
-
-@section('content')
-
-@foreach ($details as $product)
-<div class="card-columns">
-    <div class="card shadow-sm">
-        <img class="card-img-top" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->name}}">
-    </div>
-    
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <h3 class="card-title font-italic text-truncate">{{$product->productName}}</h3>
-            <p class="card-text">{{$product->description}}</p>
-        </div>
-    </div>
-    @include('buttons.addcart')
-</div>
-@endforeach
-
-@endsection
+<form action="{{URL::to('/search')}}" method="POST" class="form-inline mx-auto" role="search">
+    {{ csrf_field() }}
+    <input type="text" class="typeahead form-control mr-sm-2" name="query" placeholder="Find your product"
+        aria-label="search">
+    <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+</form>

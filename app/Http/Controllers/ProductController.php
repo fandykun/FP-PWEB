@@ -93,6 +93,12 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('pages.show')->with('product', $product);
     }
+    public function showSearch(Request $request)
+    {
+        $product = Product::where('productName', '=', $request->searchProduct)->get();
+        $productid = $product->id;
+        return show($productid);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -159,6 +165,23 @@ class ProductController extends Controller
 
         return redirect('/');
     }
+
+    public function search(Request $request)
+    {
+        $term = $request->term;
+        $products = Product::where('productName', 'LIKE', '%'.$term.'%')->get();
+        // $product = Product::findOrFail($request->id);
+        // $product->productName = $request->productName;
+        // $product->save();
+        if(count($products) == 0)
+            $searchResult[] = 'No item found';
+        else {
+            foreach($products as $key => $value){
+                $searchResult[] = $value->productName;
+            }
+        }
+        return $searchResult;
+    }    
 
     /**
      * Remove the specified resource from storage.
