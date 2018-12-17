@@ -81,9 +81,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
-        $categories = Category::findOrFail($id);
+        // $categories = Category::findOrFail($id);
+        $categories = Category::where('name', $name)->get()->first();
         $products = $categories->product()->get();
 
         return view('category.show')->with(['categories'=>$categories,'products'=>$products]);
