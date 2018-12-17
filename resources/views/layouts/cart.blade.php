@@ -14,7 +14,7 @@
                     $sum += $cart->quantity*$product->price;
                 ?>
                 <div class="card">
-                    <table class="table">
+                    <table class="table table-borderless">
                         <tr>
                             <td><img src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}" class="card-img-top cart-img"></td>
                             <td class="mx0">
@@ -44,7 +44,7 @@
             <br>
             <a class="btn btn-primary centered" href="{{ route('login') }}">{{ __('Login') }}</a>
         @else
-            <button class="my-2 btn btn-primary centered">Check Out</button>
+            <a href="/transaction/{{$cart->user_id}}" class="my-2 btn btn-primary centered">Check Out</a>
         @endguest
     </div>
 </div>
