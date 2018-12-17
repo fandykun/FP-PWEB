@@ -14,10 +14,14 @@
                         <div class="popover-menu" style="display:none;">
                             {{-- TODO:Add icon for category items --}}
                             {{-- TODO:Category ngga manual --}}
-                            <a href="/category/1" class="dropdown-item">Smartphone</a>
-                            <a href="/category/2" class="dropdown-item">PC & Laptop</a>
-                            <a href="/category/3" class="dropdown-item">Smartwatch</a>
-                            <a href="/category/4" class="dropdown-item">Peripheral Device</a>
+                            <?php
+                                
+
+                            ?>
+                            <a href="/category/smartphone" class="dropdown-item">Smartphone</a>
+                            <a href="/category/pc-notebook" class="dropdown-item">PC & Notebook</a>
+                            <a href="/category/smartwatch" class="dropdown-item">Smartwatch</a>
+                            <a href="/category/peripheral-device" class="dropdown-item">Peripheral Device</a>
                         </div>
                     </div>
                 </li>
