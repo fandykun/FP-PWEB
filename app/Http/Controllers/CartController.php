@@ -20,7 +20,7 @@ class CartController extends Controller
         $cart = new Cart;
         $cart->user_id = auth()->user()->id;
         $cart->product_id = $request->productId;
-        $cart->quantity = 1;
+        $cart->quantity = $request->quant;
         $product = Product::findOrFail($cart->product_id);
         if ($cart->quantity > $product->stock) {
             $cart->quantity = $product->stock;

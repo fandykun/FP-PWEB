@@ -15,6 +15,7 @@
 <form action="/cart" method="post" enctype="multipart/form-data">
         @csrf
     <input type="hidden" name="productId" value="{{$product->id}}">
+    <input type="hidden" name="quant" value="1">
     <button type="submit" class="mt-2 btn btn-outline-primary btn-block">Add to Cart</button>
 </form>
 
