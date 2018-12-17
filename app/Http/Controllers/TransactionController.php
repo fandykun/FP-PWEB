@@ -31,6 +31,10 @@ class TransactionController extends Controller
             $transaction->user_id = $cart->user_id;
             $transaction->quantity = $cart->quantity;
             $transaction->save();
+            $cart->delete();
+            $product = Product::findOrFail($transaction->product_id);
+            $product->stock -= $transaction->quantity;
+            $product->save();
         }
 
         return redirect('/');
