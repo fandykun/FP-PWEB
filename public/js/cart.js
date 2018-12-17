@@ -86,9 +86,18 @@ $(document).ready(function () {
     });
 });
 
-// Enable popover everywhere with data-toggle
+// Category Nav
 $(document).ready(function () {
-    $('[data-toggle="popover"]').popover();
+    $('#popoverCategory').popover({
+        html: true,
+        delay: { hide: 3000 },
+        positionFixed: true,
+        placement: 'bottom',
+        trigger: 'hover',
+        content: function content() {
+            return $($(this).data('contentwrapper')).html();
+        }
+    });
 });
 
 //plugin bootstrap minus and plus
