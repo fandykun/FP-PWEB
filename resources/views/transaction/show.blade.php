@@ -74,6 +74,6 @@
     </div>
 
     <div class="row my-3">
-        <a href="/transaction" class="btn btn-outline-success btn-lg btn-block">Pay</a>
+        <a href="/transaction/create" class="btn btn-outline-success btn-lg btn-block">Pay</a>
     </div>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Cart;
 use App\User;
 use App\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -17,7 +18,22 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        // dd(Auth::user());
+        $user = Auth::user();
+        $carts = $user->cart;
+        // dd($carts);
+        // dd(count($carts));
+        // for ($i = 0; $i < count($carts); $i++) {
+        foreach ($carts as $cart) {
+            $transaction = new Transaction;
+
+            $transaction->product_id = $cart->product_id;
+            $transaction->user_id = $cart->user_id;
+            $transaction->quantity = $cart->quantity;
+            $transaction->save();
+        }
+
+        return redirect('/');
     }
 
     /**
