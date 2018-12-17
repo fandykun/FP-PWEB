@@ -10,7 +10,7 @@
     ?>
     @foreach ($carts as $cart)
         <?php 
-            $product = $cart->product; 
+            $product = $cart->product*$cart->quantity; 
             $total += $product->price;
         ?>
         <div class="row">
