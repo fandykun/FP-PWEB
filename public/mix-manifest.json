@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/css/cart.css": "/css/cart.css",
     "/css/stars.css": "/css/stars.css",
+    "/js/stars.js": "/js/stars.js",
     "/js/cart.js": "/js/cart.js"
 }

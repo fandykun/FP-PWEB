@@ -2,13 +2,13 @@
     <div class="card">
         <div class="card-header">Recently Purchased Items</div>
         <div class="card-body">
-            <?php $carts = auth()->user()->cart;
-                if(isset($carts) && count($carts)>0){
+            <?php $transactions = auth()->user()->transaction;
+                if(isset($transactions) && count($transactions)>0){
             ?>
             <div class="carousel slide my-4" data-ride="carousel" id="rateCarousel">
                 <ol class="carousel-indicators">
                     <li data-target="#rateCarousel" data-slide-to="0" class="active"></li>
-                    @for($i = 1; $i < count($carts); $i++)
+                    @for($i = 1; $i < count($transactions); $i++)
                         <li data-target="#rateCarousel" data-slide-to="{{$i}}"></li>
                     @endfor
                 </ol>
@@ -16,9 +16,9 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                     <div class="card">
-                        <img src="/storage/coverProducts/{{$carts[0]->product->coverProducts}}" alt="{{$carts[0]->product->productName}}" class="card-img-top">
+                        <img src="/storage/coverProducts/{{$transactions[0]->product->coverProducts}}" alt="{{$transactions[0]->product->productName}}" class="card-img-top">
                         <div class="card-body d-none d-md-block text-center">
-                            <h5>{{$carts[0]->product->productName}}</h5>
+                            <h5>{{$transactions[0]->product->productName}}</h5>
                         </div>
                         <div class="form-group card-footer" id="rating-ability-wrapper">
                             <div class="container mx-auto" style="width: 250px; display: block;">
@@ -35,12 +35,12 @@
                         </div>
                     </div>
                     </div>
-                    @for($i = 1; $i < count($carts); $i++)
-                    <div class="carousel-item">
+                    @for($i = 1; $i < count($transactions); $i++)
+                    <div class="carousel-item carouselx">
                         <div class="card">
-                            <img src="/storage/coverProducts/{{$carts[$i]->product->coverProducts}}" alt="{{$carts[$i]->product->productName}}" class="card-img-top">
+                            <img src="/storage/coverProducts/{{$transactions[$i]->product->coverProducts}}" alt="{{$transactions[$i]->product->productName}}" class="card-img-top">
                             <div class="card-body d-none d-md-block text-center">
-                                <h5>{{$carts[$i]->product->productName}}</h5>
+                                <h5>{{$transactions[$i]->product->productName}}</h5>
                             </div>
                             <div class="form-group card-footer" id="rating-ability-wrapper">
                                 <div class="container mx-auto" style="width: 250px; display: block;">

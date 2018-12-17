@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.active .rating {
+.carousel-item.active .rating {
   float: left;
 }
 
@@ -8,13 +8,13 @@
     follow these rules. Every browser that supports :checked also supports :not(), so
     it doesn’t make the test unnecessarily selective */
 
-.active .rating:not(:checked) > input {
+.carousel-item.active .rating:not(:checked) > input {
   position: absolute;
   top: -9999px;
   clip: rect(0, 0, 0, 0);
 }
 
-.active .rating:not(:checked) > label {
+.carousel-item.active .rating:not(:checked) > label {
   float: right;
   width: 1em;
   /* padding:0 .1em; */
@@ -26,28 +26,28 @@
   color: #ddd;
 }
 
-.active .rating:not(:checked) > label:before {
+.carousel-item.active .rating:not(:checked) > label:before {
   content: '\2605   ';
 }
 
-.active .rating > input:checked ~ label {
+.carousel-item.active .rating > input:checked ~ label {
   color: dodgerblue;
 }
 
-.active .rating:not(:checked) > label:hover,
-.active .rating:not(:checked) > label:hover ~ label {
+.carousel-item.active .rating:not(:checked) > label:hover,
+.carousel-item.active .rating:not(:checked) > label:hover ~ label {
   color: dodgerblue;
 }
 
-.active .rating > input:checked + label:hover,
-.active .rating > input:checked + label:hover ~ label,
-.active .rating > input:checked ~ label:hover,
-.active .rating > input:checked ~ label:hover ~ label,
-.active .rating > label:hover ~ input:checked ~ label {
+.carousel-item.active .rating > input:checked + label:hover,
+.carousel-item.active .rating > input:checked + label:hover ~ label,
+.carousel-item.active .rating > input:checked ~ label:hover,
+.carousel-item.active .rating > input:checked ~ label:hover ~ label,
+.carousel-item.active .rating > label:hover ~ input:checked ~ label {
   color: dodgerblue;
 }
 
-.active .rating > label:active {
+.carousel-item.active .rating > label:active {
   position: relative;
   top: 2px;
   left: 2px;

@@ -60,45 +60,27 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 47:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
 
-/***/ 48:
+/***/ 49:
 /***/ (function(module, exports) {
 
-jQuery(document).ready(function ($) {
-
-    $(".btnrating").on('click', function (e) {
-
-        var previous_value = $("#selected_rating").val();
-
-        var selected_value = $(this).attr("data-attr");
-        $("#selected_rating").val(selected_value);
-
-        $(".selected-rating").empty();
-        $(".selected-rating").html(selected_value);
-
-        for (i = 1; i <= selected_value; ++i) {
-            $("#rating-star-" + i).toggleClass('btn-warning');
-            $("#rating-star-" + i).toggleClass('btn-default');
-        }
-
-        for (ix = 1; ix <= previous_value; ++ix) {
-            $("#rating-star-" + ix).toggleClass('btn-warning');
-            $("#rating-star-" + ix).toggleClass('btn-default');
-        }
-    });
-});
+// jQuery(document).ready(function($){
+//     $(".carousel-control-next").on('click',(function(e) {
+//         $(".carousel-item").toggleClass('active');
+//     }));
+// });
 
 /***/ })
 
