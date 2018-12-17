@@ -2,7 +2,9 @@
     <div class="card">
         <div class="card-header">Recently Purchased Items</div>
         <div class="card-body">
-            <?php $carts = auth()->user()->cart?>
+            <?php $carts = auth()->user()->cart;
+                if(isset($carts) && count($carts)>0){
+            ?>
             <div class="carousel slide my-4" data-ride="carousel" id="rateCarousel">
                 <ol class="carousel-indicators">
                     <li data-target="#rateCarousel" data-slide-to="0" class="active"></li>
@@ -34,7 +36,7 @@
                     </div>
                     </div>
                     @for($i = 1; $i < count($carts); $i++)
-                        <div class="carousel-item">
+                    <div class="carousel-item">
                         <div class="card">
                             <img src="/storage/coverProducts/{{$carts[$i]->product->coverProducts}}" alt="{{$carts[$i]->product->productName}}" class="card-img-top">
                             <div class="card-body d-none d-md-block text-center">
@@ -54,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
                     @endfor
                 </div>
 
@@ -65,7 +67,9 @@
                 <a class="carousel-control-next" href="#rateCarousel" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
+
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>
