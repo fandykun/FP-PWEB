@@ -5,7 +5,9 @@
         @guest
             <h6>You aren't logged in.</h6>
         @else
-            <?php $carts = auth()->user()->cart?>
+            <?php $carts = auth()->user()->cart;
+                if(isset($carts)){
+            ?>
             {{-- OPTIONAL: Cleanup style maybe with css file --}}
             @foreach($carts as $cart)
                 <?php
@@ -39,6 +41,7 @@
             @endforeach
                 <p class="text-muted d-flex rightflex">Total item :{{$count}}</p>
                 <p class="d-flex rightflex">Total Price :Rp. {{$sum}},-</p>
+                <?php } ?>
         @endguest
     </div>
     <div>
@@ -46,7 +49,9 @@
             <br>
             <a class="btn btn-primary centered" href="{{ route('login') }}">{{ __('Login') }}</a>
         @else
+        <?php if(isset($cart)){ ?>
             <a href="/transaction/{{$cart->user_id}}" class="my-2 btn btn-primary centered">Check Out</a>
+        <?php } ?>
         @endguest
     </div>
 </div>
