@@ -11,9 +11,10 @@
             {{-- OPTIONAL: Cleanup style maybe with css file --}}
             @foreach($carts as $cart)
                 <?php
-                    $product = $cart->product;
-                    $count = $count + $cart->quantity;
-                    $sum += $cart->quantity*$product->price;
+                    if($cart->quantity!=0){
+                        $product = $cart->product;
+                        $count = $count + $cart->quantity;
+                        $sum += $cart->quantity*$product->price;
                 ?>
                 <div class="card">
                     <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
@@ -38,6 +39,7 @@
                         </form>
                     </a>
                 </div>
+                <?php }?>
             @endforeach
                 <p class="text-muted d-flex rightflex">Total item :{{$count}}</p>
                 <p class="d-flex rightflex">Total Price :Rp. {{$sum}},-</p>
