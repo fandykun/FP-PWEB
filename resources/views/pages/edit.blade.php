@@ -51,7 +51,7 @@
         @endif
     </form>
 
-    <form action="/product/{{$product->id}}">
+    <form action="/product/{{$product->id}}" method="POST">
         @csrf
         @method('DELETE')
 
