@@ -46,24 +46,37 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
-        // User $id
-        $user = User::find($id);
-        $carts = $user->cart;
-        
-        $transaction = new Transaction;
-        foreach ($carts as $cart) {
-            $transaction->product_id = $cart->product_id;
+        $cart = new Cart;
+        $cart->user_id = auth()->user()->id;
+        $cart->product_id = $request->productId;
+        $cart->quantity = 1;
+        $product = Product::findOrFail($cart->product_id);
+        if ($cart->quantity > $product->stock) {
+            $cart->quantity = $product->stock;
         }
-        $transaction->user_id = $id;
-        $transaction->quantity = count($carts);
+        $cart->save();
 
-        $transaction->save();
+        return view('transaction.show');
 
-        return redirect('/')->with('Please pay immediately.');
+        // User $id
+        // $user = User::find($id);
+        // $carts = $user->cart;
+        
+        // $transaction = new Transaction;
+        // foreach ($carts as $cart) {
+        //     $transaction->product_id = $cart->product_id;
+        // }
+        // $transaction->user_id = $id;
+        // $transaction->quantity = count($carts);
+
+        // $transaction->save();
+
+        // return redirect('/')->with('Please pay immediately.');
     }
 
+    
     /**
      * Display the specified resource.
      *

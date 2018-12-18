@@ -26,10 +26,15 @@
                 <button type="button" class="btn btn-outline-success btn-number" data-type="plus" data-field="quant">+</button>
             </span>
         </div>
-        <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow-md btn-block">Buy</a>
     <input type="hidden" name="productId" value="{{$product->id}}">
     <button type="submit" class="mt-2 btn btn-outline-primary shadow-md btn-block">Add to Cart</button>
 </form>
+<form action="/transaction" method="post">
+@csrf
+    <input type="hidden" name="productId" value="{{$product->id}}">
+    <button type="submit" class="mt-2 btn btn-outline-primary shadow-md btn-block">Buy</button>
+</form>
+    
 
 <?php }else{ ?>
 
@@ -45,10 +50,10 @@
                     <button type="button" class="btn btn-outline-success btn-number" data-type="plus" data-field="quant">+</button>
                 </span>
             </div>
-            <a href="/transaction/{{$product->id}}" class="mt-2 btn btn-outline-primary shadow-md btn-block">Buy</a>
         <input type="hidden" name="productId" value="{{$product->id}}">
         <button type="submit" class="mt-2 btn btn-outline-primary shadow-md btn-block">Add to Cart</button>
     </form>
+    <a href="/transaction/{{$cart->user_id}}" class="mt-2 btn btn-outline-primary shadow-md btn-block">Buy</a>
 
 <?php } ?>
 @endguest
