@@ -32,7 +32,7 @@
                         {{-- {{ csrf_field() }} --}}
                         <input type="text" id="searchProduct" class="typeahead form-control mr-sm-2" name="searchProduct" placeholder="Find your product"
                             aria-label="search">
-                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0" disabled>Search</button>
                     </form>
 
             <a href="javascript:void(0)" class="btn btn-outline-primary" rel="popover" data-contentwrapper=".mycontent" data-trigger="focus">Cart</a>
