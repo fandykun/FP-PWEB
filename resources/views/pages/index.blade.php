@@ -56,7 +56,7 @@
                             <img class="card-img-top" style="opacity:0.4;" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
                         @endif
                         <div class="card-body">
-                            <h5 class="card-title text-dark">{{$product->productName}}</h5>
+                            <h5 class="card-title text-dark text-truncate">{{$product->productName}}</h5>
                             <p class="card-text text-dark text-truncate" style="max-width:200px">{{$product->description}}</p>  
                         </div>
                         <div class="card-footer">

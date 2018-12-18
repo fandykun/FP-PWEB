@@ -25,7 +25,7 @@
                         <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
                         <img class="card-img-top" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
                         <div class="card-body">
-                            <h5 class="card-title text-dark">{{$product->productName}}</h5>
+                            <h5 class="card-title text-dark text-truncate">{{$product->productName}}</h5>
                             <p class="card-text text-dark text-truncate" style="max-width:200px">{{$product->description}}</p>  
                         </div>
                         <div class="card-footer">
