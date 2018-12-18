@@ -1,7 +1,7 @@
 <div class="col-md-8 my-3">
     <div class="card">
         <div class="card-header collapse-two">Recently Purchased Items</div>
-        <div class="card-body collapsed-two">
+        <div class="card-body collapsed-two collapse">
             <?php $transactions = auth()->user()->transaction;
                 if(isset($transactions) && count($transactions)>0){
             ?>
