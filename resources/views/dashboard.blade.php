@@ -4,9 +4,9 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Update Profile</div>
+            <div class="card-header collapse-one">Update Profile</div>
 
-            <div class="card-body">
+            <div class="card-body collapsed-one">
                 @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
@@ -62,6 +62,17 @@
     @include('layouts.rating')
 </div>
 
-
+<script>
+    $(document).ready(function(){
+        $(".collapse-one").click(function(){
+            $(".collapsed-one").collapse('toggle');
+            $(".collapsed-two").collapse('hide');
+        });
+        $(".collapse-two").click(function(){
+            $(".collapsed-two").collapse('toggle');
+            $(".collapsed-one").collapse('hide');
+        });
+    });
+</script>
 
 @endsection
