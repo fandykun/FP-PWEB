@@ -52,7 +52,7 @@
             <a class="btn btn-primary centered" href="{{ route('login') }}">{{ __('Login') }}</a>
         @else
         <?php if(isset($cart) && $cart->quantity!=0){ ?>
-            <a href="/transaction/{{$cart->user_id}}" class="my-2 btn btn-primary centered">Check Out</a>
+            <a href="/transaction/{{$cart->user_id}}" class="my-2 btn btn-primary btn-block">Check Out</a>
         <?php } ?>
         @endguest
     </div>
