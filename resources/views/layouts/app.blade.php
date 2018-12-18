@@ -10,7 +10,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <div class="dropdown">
-                        <a href="/category" class="btn btn-outline-dark text-white" id="popoverCategory" data-toggle="popover" data-contentwrapper=".popover-menu">Category</a>
+                        <a href="/category" class="btn btn-outline-dark text-white" id="popoverCategory" data-toggle="popover" data-contentwrapper=".popover-menu"><i class="fas fa-list"></i> Category</a>
                         <div class="popover-menu" style="display:none;">
                             {{-- TODO:Add icon for category items --}}
                             {{-- TODO:Category ngga manual --}}
@@ -44,11 +44,11 @@
                 <!-- Authentication Links -->
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> {{ __('Login') }}</a>
                 </li>
                 <li class="nav-item">
                     @if (Route::has('register'))
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> {{ __('Register') }}</a>
                     @endif
                 </li>
                 @else
@@ -59,10 +59,10 @@
                     </a>
                     
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                        <a class="dropdown-item" href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

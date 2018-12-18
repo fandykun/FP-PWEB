@@ -10,6 +10,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="{{mix('/css/cart.css')}}">
     <link rel="stylesheet" href="{{mix('/css/stars.css')}}">
+    <link rel="stylesheet" href="{{mix('/css/app.css')}}">
     <link href="{{ asset('css/product.css') }}" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
