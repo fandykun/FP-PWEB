@@ -50,13 +50,17 @@
                 @foreach($products as $product)
                     <div class="card mb-4" style="min-width: 15rem; max-width: 15rem;">
                         <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
-                        <img class="card-img-top" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
+                        @if($product->stock > 0)
+                            <img class="card-img-top" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
+                        @else
+                            <img class="card-img-top" style="opacity:0.4;" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
+                        @endif
                         <div class="card-body">
                             <h5 class="card-title text-dark">{{$product->productName}}</h5>
                             <p class="card-text text-dark text-truncate" style="max-width:200px">{{$product->description}}</p>  
                         </div>
                         <div class="card-footer">
-                                <h4 class="card-text text-dark">Rp {{$product->price}}</h4>
+                                <h4 class="card-text text-dark">Rp. {{$product->price}},-</h4>
                                 @guest
                                 @else
                                     @if($product->stock > 0)
