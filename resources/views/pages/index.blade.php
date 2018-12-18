@@ -50,7 +50,7 @@
                 @foreach($products as $product)
                     <div class="card mb-4" style="min-width: 15rem; max-width: 15rem;">
                         <a href="/product/{{$product->id}}" style="text-decoration:none;" id="link-product-page"> 
-                        @if($product->stock > 0)
+                        @if($product->stock > 0 || Auth::guest())
                             <img class="card-img-top" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
                         @else
                             <img class="card-img-top" style="opacity:0.4;" src="/storage/coverProducts/{{$product->coverProducts}}" alt="{{$product->productName}}">
