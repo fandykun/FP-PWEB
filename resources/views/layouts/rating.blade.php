@@ -1,6 +1,6 @@
 <div class="col-md-8 my-3">
     <div class="card">
-        <div class="card-header collapse-two">Recently Purchased Items</div>
+        <div class="card-header collapse-two text-center">Recently Purchased Items <i class="fas fa-chevron-circle-down"></i></div>
         <div class="card-body collapsed-two collapse">
             <?php $transactions = auth()->user()->transaction;
                 if(isset($transactions) && count($transactions)>0){
