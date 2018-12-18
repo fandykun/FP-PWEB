@@ -37,7 +37,7 @@ class TransactionController extends Controller
             $product->save();
         }
 
-        return redirect('/');
+        return view('transaction.payment');
     }
 
     /**
