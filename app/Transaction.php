@@ -15,4 +15,6 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    // protected $fillable = ['product_id', 'user_id', 'quantity'];
 }

@@ -1,0 +1,25 @@
+.cart-img {
+  max-width: 100px;
+}
+
+.popover {
+  max-width: 100%;
+}
+
+.centered {
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+
+.rightflex {
+  -ms-flex-align: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  padding-right: 1px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+

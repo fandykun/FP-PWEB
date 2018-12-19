@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Category;
 
 // use Symfony\Component\HttpFoundation\Request;
 
@@ -28,7 +30,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('pages.create')->with('categories', $categories);
     }
 
     /**
@@ -37,9 +41,45 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
-        //
+        // Validate form (backend)
+        $request->validate([
+            "productName" => "required|max:255",
+            "categoryName" => "required",
+            "description" => "required",
+            "priceProduct" => "required",
+            "stockProduct" => "required",
+            "coverProduct" => "image|nullable|max:2999"
+        ]);
+        // dd($request);
+
+        // Handle file upload
+        if ($request->hasFile('coverProduct')) {
+            // Get filename w/ ext
+            $filenameWithExt = $request->file('coverProduct')->getClientOriginalName();
+            // Filename wo/ ext
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Ext
+            $ext = $request->file('coverProduct')->extension();
+            // Filename to store
+            $filenameToStore = $filename . '_' . time() . '_' . $ext;
+            // Upload
+            $path = $request->file('coverProduct')->storeAs('public/coverProducts', $filenameToStore);
+        } else {
+            $filenameToStore = 'noimage.jpg';
+        }
+
+        $product->create([
+            "productName" => $request->productName,
+            "category_id" => $request->categoryName, //Ini berdasarkan tabel (fk)
+            "description" => $request->description,
+            "price" => $request->priceProduct,
+            "stock" => $request->stockProduct,
+            "coverProducts" => $filenameToStore
+        ]);
+
+        return redirect('/')->with('success', 'Product Berhasil Dibuat');
     }
 
     /**
@@ -48,9 +88,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('pages.show')->with('product', $product);
+    }
+    
+    public function showSearch(Request $request)
+    {
+        $product = Product::where('productName', '=', $request->searchProduct)->get();
+        $productid = $product->id;
+        return show($productid);
     }
 
     /**
@@ -59,9 +107,12 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $categoryProd = Category::find($product->category_id);
+        $categories = Category::all();
+        return view('pages.edit')->with(['product' => $product, 'categoryProd' => $categoryProd, 'categories' => $categories]);
     }
 
     /**
@@ -71,10 +122,64 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        // Validate form (backend)
+        $request->validate([
+            "productName" => "required|max:255",
+            "categoryName" => "required",
+            "description" => "required",
+            "priceProduct" => "required",
+            "stockProduct" => "required",
+            "coverProduct" => "image|nullable|max:2999"
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('coverProduct')) {
+            // Get filename w/ ext
+            $filenameWithExt = $request->file('coverProduct')->getClientOriginalName();
+            // Filename wo/ ext
+            $filename = \pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Ext
+            $ext = $request->file('coverProduct')->extension();
+            // Filename to store
+            $filenameToStore = $filename . '_' . time() . '_' . $ext;
+            // Upload
+            $path = $request->file('coverProduct')->storeAs('public/coverProducts', $filenameToStore);
+        } else {
+            $filenameToStore = 'noimage.jpg';
+        }
+
+        // Product update
+        $product = Product::findOrFail($id);
+        $product->productName = $request->productName;
+        $product->category_id = $request->categoryName;
+        $product->description = $request->description;
+        $product->price = $request->priceProduct;
+        $product->stock = $request->stockProduct;
+
+        if ($request->hasFile('coverProduct')) {
+            $product->coverProducts = $filenameToStore;
+        }
+
+        $product->save();
+
+        return redirect('/');
     }
+
+    public function search(Request $request)
+    {
+        $term = $request->term;
+        $products = Product::where('productName', 'LIKE', '%'.$term.'%')->get();
+        if(count($products) == 0)
+            $searchResult[] = 'No item found';
+        else {
+            foreach($products as $key => $value){
+                $searchResult[] = $value->productName;
+            }
+        }
+        return $searchResult;
+    }    
 
     /**
      * Remove the specified resource from storage.
@@ -82,8 +187,14 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if ($$product->coverProducts != 'noimage.jpg') {
+            Storage::delete('public/coverProducts/' . $$product->coverProducts);
+        }
+
+        $product->delete();
+        return redirect('/');
     }
 }

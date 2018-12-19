@@ -1,0 +1,21 @@
+.cart-img{
+    max-width: 100px;
+}
+
+.popover{
+    max-width: 100%;
+}
+
+.centered{
+    width: 200px; 
+    display: block;
+    margin: auto;
+}
+
+.rightflex{
+    -ms-flex-align: start;
+    flex-direction: row-reverse;
+    padding-right: 1px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
